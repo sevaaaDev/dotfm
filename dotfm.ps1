@@ -1,6 +1,6 @@
 function Traverse-Folder {
   param($path)
-  foreach($dotPath in (ls $path).fullname) {
+  foreach($dotPath in (Get-Childitem $path).fullname) {
     $homePath = $dotPath.replace("$pwd", "$env:USERPROFILE")
     if (!( Test-Path -Path $homePath )) {
       New-Item -ItemType SymbolicLink -Path $homePath -Target $dotPath
